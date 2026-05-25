@@ -1,5 +1,6 @@
 import { Calendar, GraduationCap, Gift, ShieldCheck } from "lucide-react";
 import { perks } from "../constants/siteData";
+import FadeUp from "./FadeUp";
 
 const iconMap: Record<string, React.ElementType> = {
   calendar: Calendar,
@@ -19,7 +20,7 @@ export default function PerksSection() {
       }}
     >
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <div style={{ marginBottom: 64, textAlign: "center" }}>
+        <FadeUp style={{ marginBottom: 64, textAlign: "center" }}>
           <h2
             style={{
               fontFamily: "var(--font-lora), Georgia, serif",
@@ -44,7 +45,7 @@ export default function PerksSection() {
           >
             Výcvik přizpůsobujeme vám — ne naopak.
           </p>
-        </div>
+        </FadeUp>
 
         <div
           style={{
@@ -53,49 +54,50 @@ export default function PerksSection() {
             gap: 24,
           }}
         >
-          {perks.map((perk) => {
+          {perks.map((perk, i) => {
             const Icon = iconMap[perk.icon] ?? ShieldCheck;
             return (
-              <div
-                key={perk.title}
-                style={{
-                  background: "var(--white)",
-                  border: "1px solid var(--stone-border)",
-                  borderRadius: 12,
-                  padding: "32px 28px",
-                }}
-              >
-                <div style={{ display: "flex", alignItems: "flex-start", gap: 16 }}>
-                  <Icon
-                    size={22}
-                    style={{ color: "var(--green)", flexShrink: 0, marginTop: 4 }}
-                  />
-                  <div>
-                    <h3
-                      style={{
-                        fontFamily: "var(--font-lora), Georgia, serif",
-                        fontSize: 20,
-                        fontWeight: 600,
-                        color: "var(--text)",
-                        margin: "0 0 8px",
-                      }}
-                    >
-                      {perk.title}
-                    </h3>
-                    <p
-                      style={{
-                        fontFamily: "var(--font-outfit), sans-serif",
-                        fontSize: 15,
-                        color: "var(--text-muted)",
-                        lineHeight: 1.6,
-                        margin: 0,
-                      }}
-                    >
-                      {perk.desc}
-                    </p>
+              <FadeUp key={perk.title} delay={i * 0.08}>
+                <div
+                  style={{
+                    background: "var(--white)",
+                    border: "1px solid var(--stone-border)",
+                    borderRadius: 12,
+                    padding: "32px 28px",
+                  }}
+                >
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: 16 }}>
+                    <Icon
+                      size={22}
+                      style={{ color: "var(--green)", flexShrink: 0, marginTop: 4 }}
+                    />
+                    <div>
+                      <h3
+                        style={{
+                          fontFamily: "var(--font-lora), Georgia, serif",
+                          fontSize: 20,
+                          fontWeight: 600,
+                          color: "var(--text)",
+                          margin: "0 0 8px",
+                        }}
+                      >
+                        {perk.title}
+                      </h3>
+                      <p
+                        style={{
+                          fontFamily: "var(--font-outfit), sans-serif",
+                          fontSize: 15,
+                          color: "var(--text-muted)",
+                          lineHeight: 1.6,
+                          margin: 0,
+                        }}
+                      >
+                        {perk.desc}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </FadeUp>
             );
           })}
         </div>

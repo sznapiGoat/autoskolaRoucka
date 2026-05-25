@@ -2,6 +2,7 @@
 
 import { Phone, Mail } from "lucide-react";
 import { site } from "../constants/siteData";
+import FadeUp from "./FadeUp";
 
 export default function PricingSection() {
   return (
@@ -23,7 +24,7 @@ export default function PricingSection() {
           className="pricing-grid"
         >
           {/* Left: text */}
-          <div>
+          <FadeUp>
             <h2
               style={{
                 fontFamily: "var(--font-lora), Georgia, serif",
@@ -63,10 +64,10 @@ export default function PricingSection() {
             >
               Zavolejte nebo napište — sdělíme vám aktuální cenu a domluvíme podmínky splátkovému plánu přímo na míru.
             </p>
-          </div>
+          </FadeUp>
 
           {/* Right: contact card */}
-          <div>
+          <FadeUp delay={0.12}>
             <div
               style={{
                 background: "rgba(245,240,232,0.06)",
@@ -193,7 +194,7 @@ export default function PricingSection() {
                 ))}
               </div>
             </div>
-          </div>
+          </FadeUp>
         </div>
       </div>
 

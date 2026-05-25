@@ -1,56 +1,54 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import { ArrowDown, Phone } from "lucide-react";
 import { site } from "../constants/siteData";
 
+const ease = [0.16, 1, 0.3, 1] as const;
+
 export default function HeroSection() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const handler = () => {
-      const y = window.scrollY;
-      el.style.transform = `translateY(${y * 0.3}px)`;
-    };
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
-  }, []);
-
   return (
     <section
       style={{
         position: "relative",
-        minHeight: "100vh",
+        minHeight: "min(100svh, 680px)",
         display: "flex",
         alignItems: "center",
         overflow: "hidden",
-        background: "var(--text)",
       }}
     >
-      {/* Parallax background pattern */}
-      <div
-        ref={ref}
-        style={{
-          position: "absolute",
-          inset: "-20%",
-          background: `
-            radial-gradient(ellipse 80% 60% at 60% 40%, rgba(45,106,79,0.25) 0%, transparent 70%),
-            radial-gradient(ellipse 50% 40% at 20% 70%, rgba(181,101,29,0.15) 0%, transparent 60%)
-          `,
-          zIndex: 0,
-        }}
-      />
-
-      {/* Texture overlay */}
+      {/* Photo background */}
       <div
         style={{
           position: "absolute",
           inset: 0,
-          opacity: 0.04,
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f5f0e8' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1502877338535-766e1452684a?w=1920&q=80&auto=format&fit=crop')",
+          backgroundSize: "cover",
+          backgroundPosition: "center 40%",
           zIndex: 0,
+        }}
+      />
+
+      {/* Dark gradient overlay */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "linear-gradient(105deg, rgba(44,36,22,0.88) 0%, rgba(44,36,22,0.70) 55%, rgba(44,36,22,0.45) 100%)",
+          zIndex: 1,
+        }}
+      />
+
+      {/* Green-tinted accent */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "radial-gradient(ellipse 60% 70% at 65% 55%, rgba(45,106,79,0.18) 0%, transparent 70%)",
+          zIndex: 1,
         }}
       />
 
@@ -64,16 +62,20 @@ export default function HeroSection() {
           padding: "120px 24px 80px",
           width: "100%",
         }}
+        className="hero-content"
       >
-        <div style={{ maxWidth: 700 }}>
+        <div style={{ maxWidth: 680 }}>
           {/* Eyebrow */}
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease }}
             style={{
               display: "inline-flex",
               alignItems: "center",
               gap: 10,
-              background: "rgba(45,106,79,0.2)",
-              border: "1px solid rgba(45,106,79,0.4)",
+              background: "rgba(45,106,79,0.25)",
+              border: "1px solid rgba(45,106,79,0.45)",
               borderRadius: 40,
               padding: "6px 16px",
               marginBottom: 32,
@@ -81,8 +83,8 @@ export default function HeroSection() {
           >
             <span
               style={{
-                width: 8,
-                height: 8,
+                width: 7,
+                height: 7,
                 borderRadius: "50%",
                 background: "#4ade80",
                 display: "inline-block",
@@ -100,13 +102,16 @@ export default function HeroSection() {
             >
               Světlá nad Sázavou · přihlášky otevřeny
             </span>
-          </div>
+          </motion.div>
 
           {/* Headline */}
-          <h1
+          <motion.h1
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1, ease }}
             style={{
               fontFamily: "var(--font-lora), Georgia, serif",
-              fontSize: "clamp(42px, 7vw, 78px)",
+              fontSize: "clamp(42px, 7vw, 76px)",
               fontWeight: 600,
               color: "var(--stone)",
               lineHeight: 1.1,
@@ -115,34 +120,37 @@ export default function HeroSection() {
             }}
           >
             Řidičský průkaz{" "}
-            <em
-              style={{
-                fontStyle: "italic",
-                color: "var(--copper-light)",
-              }}
-            >
+            <em style={{ fontStyle: "italic", color: "var(--copper-light)" }}>
               skupiny B
             </em>{" "}
             ve Světlé nad Sázavou.
-          </h1>
+          </motion.h1>
 
           {/* Sub */}
-          <p
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.22, ease }}
             style={{
               fontFamily: "var(--font-outfit), sans-serif",
               fontSize: "clamp(16px, 2vw, 19px)",
-              color: "rgba(245,240,232,0.75)",
+              color: "rgba(245,240,232,0.78)",
               lineHeight: 1.65,
-              maxWidth: 520,
+              maxWidth: 500,
               margin: "0 0 44px",
             }}
           >
             Individuální přístup, flexibilní termíny, splátky bez příplatku.
             Přihlaste se ještě dnes — kurzy začínají průběžně.
-          </p>
+          </motion.p>
 
           {/* CTAs */}
-          <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.34, ease }}
+            style={{ display: "flex", gap: 16, flexWrap: "wrap" }}
+          >
             <a
               href="#prihlaseni"
               style={{
@@ -158,7 +166,6 @@ export default function HeroSection() {
                 borderRadius: 8,
                 textDecoration: "none",
                 transition: "background 0.2s, transform 0.15s",
-                boxShadow: "none",
               }}
               onMouseEnter={(e) => {
                 const el = e.currentTarget as HTMLElement;
@@ -180,7 +187,7 @@ export default function HeroSection() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: 10,
-                background: "rgba(245,240,232,0.1)",
+                background: "rgba(245,240,232,0.12)",
                 border: "1px solid rgba(245,240,232,0.3)",
                 color: "var(--stone)",
                 fontFamily: "var(--font-outfit), sans-serif",
@@ -192,34 +199,36 @@ export default function HeroSection() {
                 transition: "background 0.2s",
               }}
               onMouseEnter={(e) =>
-                ((e.currentTarget as HTMLElement).style.background = "rgba(245,240,232,0.18)")
+                ((e.currentTarget as HTMLElement).style.background =
+                  "rgba(245,240,232,0.2)")
               }
               onMouseLeave={(e) =>
-                ((e.currentTarget as HTMLElement).style.background = "rgba(245,240,232,0.1)")
+                ((e.currentTarget as HTMLElement).style.background =
+                  "rgba(245,240,232,0.12)")
               }
             >
               <Phone size={17} />
               {site.phone}
             </a>
-          </div>
+          </motion.div>
         </div>
       </div>
 
       {/* Scroll indicator */}
       <a
-        href="#statistiky"
+        href="#kurzy"
         aria-label="Přejít dolů"
         style={{
           position: "absolute",
           bottom: 36,
           left: "50%",
           transform: "translateX(-50%)",
-          color: "rgba(245,240,232,0.5)",
-          animation: "fadedown 2s ease-out infinite",
+          color: "rgba(245,240,232,0.45)",
+          animation: "fadedown 2.5s ease-in-out infinite",
           zIndex: 10,
         }}
       >
-        <ArrowDown size={28} />
+        <ArrowDown size={26} />
       </a>
 
       <style>{`
@@ -228,9 +237,9 @@ export default function HeroSection() {
           50% { opacity: 0.4; }
         }
         @keyframes fadedown {
-          0% { opacity: 0.5; transform: translateX(-50%) translateY(0); }
-          60% { opacity: 0.8; transform: translateX(-50%) translateY(6px); }
-          100% { opacity: 0.5; transform: translateX(-50%) translateY(0); }
+          0% { opacity: 0.3; transform: translateX(-50%) translateY(0); }
+          60% { opacity: 0.7; transform: translateX(-50%) translateY(7px); }
+          100% { opacity: 0.3; transform: translateX(-50%) translateY(0); }
         }
       `}</style>
     </section>

@@ -52,3 +52,31 @@ h1, h2, h3, h4 {
   font-family: var(--font-lora), Georgia, serif;
 }
 
+@media (max-width: 768px) {
+  section {
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+
+  /* Course + review cards: reduce inner padding */
+  .card-padded {
+    padding: 28px 24px !important;
+  }
+
+  /* Process grid cells */
+  .process-cell {
+    padding: 24px 20px !important;
+  }
+
+  /* Grid gaps tighter on mobile */
+  .grid-tight {
+    gap: 16px !important;
+  }
+
+  /* Hero content padding */
+  .hero-content {
+    padding-top: 88px !important;
+    padding-bottom: 56px !important;
+  }
+}
+
