@@ -1,6 +1,7 @@
 import NavBar from "./components/NavBar";
 import HeroSection from "./components/HeroSection";
 import CoursesSection from "./components/CoursesSection";
+import FleetSection from "./components/FleetSection";
 import PerksSection from "./components/PerksSection";
 import ProcessSection from "./components/ProcessSection";
 import VraceniSection from "./components/VraceniSection";
@@ -17,6 +18,7 @@ export default function Home() {
       <main>
         <HeroSection />
         <CoursesSection />
+        <FleetSection />
         <PerksSection />
         <ProcessSection />
         <VraceniSection />

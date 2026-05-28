@@ -100,7 +100,7 @@ export default function HeroSection() {
                 letterSpacing: "0.04em",
               }}
             >
-              Světlá nad Sázavou · přihlášky otevřeny
+              Světlá nad Sázavou · Havlíčkův Brod · přihlášky otevřeny
             </span>
           </motion.div>
 

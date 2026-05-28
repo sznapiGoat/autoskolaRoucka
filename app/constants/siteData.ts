@@ -2,9 +2,10 @@ export const site = {
   name: "Autoškola Roučka",
   city: "Světlá nad Sázavou",
   address: "Světlá nad Sázavou, 582 91",
+  locations: ["Světlá nad Sázavou", "Havlíčkův Brod"],
   phone: "+420 602 77 38 36",
   phoneRaw: "420602773836",
-  email: "autoskola@autoskolaroucka.cz",
+  email: "autoskolaroucka@seznam.cz",
   domain: "autoskolaroucka.cz",
 };
 
@@ -43,14 +44,14 @@ export const courses = [
     id: "skupina-b",
     title: "Skupina B",
     subtitle: "Osobní automobily",
-    desc: "Řidičský průkaz skupiny B — nejžádanější kategorie. Opravňuje k řízení vozidel do 3 500 kg s maximálně 8 místy k sezení. Výuka probíhá individuálně dle vašich časových možností.",
+    desc: "Opravňuje k řízení vozidel do 3 500 kg s nejvýše 8 místy k sezení (přívěs do 750 kg nebo souprava do 3 500 kg). Výuka dle individuálního studijního plánu dle §18 zák. č. 247/2000 Sb.",
     details: [
-      "30 hodin teorie (online i prezenčně)",
-      "Minimálně 27 hodin jízd",
-      "Příprava na zkoušky z testu i jízdy",
-      "Doprovod na zkoušce v autoškole",
+      "Věk 18 let, zdravotní způsobilost",
+      "Praktický výcvik, teorie i učební pomůcky v ceně",
+      "1 vyučovací hodina = 45 minut",
+      "Doprovod na závěrečných zkouškách",
     ],
-    price: "Cena dle aktuálního ceníku",
+    price: "od 17 500,- Kč",
     cta: "Přihlásit se",
   },
   {
@@ -60,11 +61,11 @@ export const courses = [
     desc: "Vlastníte průkaz, ale za volantem jste neseděli roky? Bojíte se výjezdu do ostrého provozu? Dálnice, parkování, noční jízda — nacvičíme přesně to, co potřebujete.",
     details: [
       "Individuální program dle vašich potřeb",
-      "Výcvik na konkrétní situace (dálnice, město…)",
+      "Trasy dle požadavků (město, dálnice, parkování)",
       "Žádné minimum hodin — vyberte si počet",
-      "Výjezd dle dohody – flexibilní termíny",
+      "Flexibilní termíny dle dohody",
     ],
-    price: "Cena za hodinu dle ceníku",
+    price: "Cena dle dohody / hodinu",
     cta: "Domluvit termín",
   },
 ];

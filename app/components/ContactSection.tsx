@@ -1,5 +1,6 @@
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { site } from "../constants/siteData";
+// site.locations lists both branches: Světlá nad Sázavou and Havlíčkův Brod
 
 export default function ContactSection() {
   return (
@@ -23,7 +24,7 @@ export default function ContactSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            Najdete nás ve Světlé nad Sázavou
+            Najdete nás ve Světlé nad Sázavou a Havlíčkově Brodě
           </h2>
         </div>
 
@@ -53,8 +54,8 @@ export default function ContactSection() {
               },
               {
                 icon: MapPin,
-                label: "Adresa",
-                value: site.address,
+                label: "Provozovny",
+                value: site.locations.join(" · "),
                 href: `https://maps.google.com/?q=Světlá+nad+Sázavou`,
               },
               {
